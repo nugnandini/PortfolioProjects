@@ -12,6 +12,7 @@ FROM coviddeaths
 ORDER BY 1,2;
 
 
+-- 1
 -- looking at the total cases vs total deaths
 -- finding the liklihood of death by covid in a country
 SELECT Location, date, total_cases, new_cases, total_deaths, (total_deaths/total_cases)*100 AS DeathPercent
@@ -24,10 +25,11 @@ ORDER BY 1,2;
 -- shows what percentage of population got covid
 SELECT Location, date, population, total_cases, (total_cases/population)*100 as CasePercentage
 FROM coviddeaths
-WHERE Location = "china"
+-- WHERE Location = "china"
 ORDER BY 1,2;
 
 
+-- 2
 -- which country has the highest infection rate
 -- where the ratio of the cases to the population is high
 
@@ -50,7 +52,7 @@ SELECT
 	max(total_cases) AS HighestInfection, max((total_cases/population)*100) as PercentPopulationInfected
 FROM 
 	coviddeaths
-WHERE Location = "India"
+-- WHERE Location = "India"
 GROUP BY 
 	Location, population
 ORDER BY
@@ -66,6 +68,7 @@ Group by continent;
     -- countries with highest death vs population
 
 	
+-- 3
 SELECT
 	Location, continent, 
 	max(cast(total_deaths AS UNSIGNED)) AS DeathCounts, 
@@ -87,7 +90,9 @@ GROUP BY
 ORDER BY
 	DeathCounts DESC;
     
-    
+  
+  
+-- 4
 -- breaking things down by continent
 
 
