@@ -118,62 +118,7 @@ ORDER BY
 	DeathCounts DESC;
   
   
-  
-/* need to check the code   
--- however the above query does not provide the total deaths in Asia, so I will insert a row with the death count in Asia present in the location
-  -- the death counts in each continent
-  
-    
-SELECT
-	location, 
-	max(cast(total_deaths AS UNSIGNED)) AS DeathCounts 
-   
-FROM 
-	coviddeaths
-WHERE 
-	location = "North America" 
-    or location = "South America"
-    or location = "Africa" 
-    or location = "Europe"
-    or location = "Asia"
-    or location = "Oceania"
-    
---  I specified the continents because there were rows where the location had the name of a continent and the continent column was null. Those were excluded. SQL could not read "is not null" function so I used this method
-
-GROUP BY 
-	location
-ORDER BY
-	DeathCounts DESC;
-
-
-SELECT SUM(max(total_deaths)) as DeathsAsia
-FROM coviddeaths
-WHERE continent = "Asia";
-
--- The above code did not work for me so I used an alternative way
-
--- first I found out the latest date for the entries
-
-SELECT location, date, total_deaths
-FROM coviddeaths
-order by date desc;
-
--- the latest date will have the maximum total deaths, hence I will use that to find the total deaths in Asia so far
-
-SELECT 
-	SUM(cast(total_deaths AS UNSIGNED))
-FROM 
-	coviddeaths
-WHERE 
-	continent = "Asia"
-    AND date = "2020-08-20";
-    
-    SELECT location, total_deaths
-    FROM coviddeaths
-    WHERE location = "Asia";
-    */
-    
-
+ 
 
 -- global numbers
 
